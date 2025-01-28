@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.IO;
 using System.Reflection;
 using System.Text;
@@ -54,8 +55,12 @@ namespace AppPerformanceTracker.Contracts
         {
             base.RecordExecution(AppId, method, duration, dateTime);
 
-            var execution = MethodExecutionDto.Create(AppId, method, duration, dateTime);
-            var logEntry = $"{execution.AppId},{execution.MethodName},{execution.DeclaringType},{execution.FullName},{execution.ExecutionTime},{execution.DurationMs},{execution.Date}";
+            MethodExecutionDto execution = MethodExecutionDto.Create(AppId, method, duration, dateTime);
+
+
+
+
+            var logEntry = JsonConvert.SerializeObject(execution);
             var encodedLogEntry = Convert.ToBase64String(Encoding.UTF8.GetBytes(logEntry));
 
             lock (_lockObject)

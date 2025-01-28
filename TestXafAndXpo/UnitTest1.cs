@@ -4,7 +4,7 @@ using DevExpress.ExpressApp;
 using DevExpress.ExpressApp.ConditionalAppearance;
 using DevExpress.ExpressApp.Xpo;
 using TestXafAndXpo.Infrastructure;
-using static System.Net.Mime.MediaTypeNames;
+
 
 namespace TestXafAndXpo
 {
@@ -53,7 +53,7 @@ namespace TestXafAndXpo
         }
 
         [Test]
-        public void TestBusinessObject()
+        public void MethodToLog()
         {
             var CurrentObject = controller.View.CurrentObject;
 
@@ -62,6 +62,15 @@ namespace TestXafAndXpo
 
 
             Assert.IsNotNull(CurrentObject);
+        }
+        [Test]
+        public void LogToMethodData()
+        {
+        
+            
+            var Log=  File.ReadAllLines("execution_log.txt");
+        
+        
         }
     }
 }
