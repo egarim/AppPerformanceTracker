@@ -1,0 +1,53 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+
+		<IsPackable>false</IsPackable>
+		<IsTestProject>true</IsTestProject>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="coverlet.collector" Version="6.0.0" />
+		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
+		<PackageReference Include="NUnit" Version="3.14.0" />
+		<PackageReference Include="NUnit.Analyzers" Version="3.9.0" />
+		<PackageReference Include="NUnit3TestAdapter" Version="4.5.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\AppPerformanceTracker.Xaf\AppPerformanceTracker.Xaf.csproj" />
+		<ProjectReference Include="..\AppPerformanceTracker.Xpo\AppPerformanceTracker.Xpo.csproj" />
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="DevExpress.ExpressApp" Version="24.2.3" />
+		<PackageReference Include="DevExpress.ExpressApp.Chart" Version="24.2.3" />
+		<PackageReference Include="DevExpress.ExpressApp.CloneObject.Xpo" Version="24.2.3" />
+		<PackageReference Include="DevExpress.ExpressApp.CodeAnalysis" Version="24.2.3" />
+		<PackageReference Include="DevExpress.ExpressApp.ConditionalAppearance" Version="24.2.3" />
+		<PackageReference Include="DevExpress.ExpressApp.Dashboards" Version="24.2.3" />
+		<PackageReference Include="DevExpress.ExpressApp.Kpi" Version="24.2.3" />
+		<PackageReference Include="DevExpress.ExpressApp.Notifications" Version="24.2.3" />
+		<PackageReference Include="DevExpress.ExpressApp.Objects" Version="24.2.3" />
+		<PackageReference Include="DevExpress.ExpressApp.Office" Version="24.2.3" />
+		<PackageReference Include="DevExpress.ExpressApp.PivotChart" Version="24.2.3" />
+		<PackageReference Include="DevExpress.ExpressApp.PivotGrid" Version="24.2.3" />
+		<PackageReference Include="DevExpress.ExpressApp.ReportsV2" Version="24.2.3" />
+		<PackageReference Include="DevExpress.ExpressApp.Security" Version="24.2.3" />
+		<PackageReference Include="DevExpress.ExpressApp.Security.Xpo" Version="24.2.3" />
+		<PackageReference Include="DevExpress.ExpressApp.Validation" Version="24.2.3" />
+		<PackageReference Include="DevExpress.ExpressApp.Xpo" Version="24.2.3" />
+		<PackageReference Include="DevExpress.Persistent.Base" Version="24.2.3" />
+		<PackageReference Include="DevExpress.Persistent.BaseImpl.Xpo" Version="24.2.3" />
+		<PackageReference Include="Azure.Identity" Version="1.13.1" />
+		<PackageReference Include="Microsoft.Data.SqlClient" Version="5.2.2" />
+		<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="7.5.1" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Using Include="NUnit.Framework" />
+	</ItemGroup>
+
+</Project>

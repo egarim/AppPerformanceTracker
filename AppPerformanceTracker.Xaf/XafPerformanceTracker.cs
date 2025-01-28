@@ -10,9 +10,9 @@ namespace AppPerformanceTracker.Xaf
 {
     public class XafPerformanceTracker
     {
-     public void Init()
+     public void Init(string AppId)
         {
-            var harmony = new Harmony("com.yourcompany.xafapp");
+            var harmony = new Harmony(AppId);
             try
             {
                 harmony.PatchAll(typeof(XafPerformanceTracker).Assembly);

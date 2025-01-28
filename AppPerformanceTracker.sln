@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppPerformanceTracker.Xpo",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppPerformanceTracker.Xaf", "AppPerformanceTracker.Xaf\AppPerformanceTracker.Xaf.csproj", "{C145564D-0CCE-4BA6-8964-E01FEDDE8893}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestXafAndXpo", "TestXafAndXpo\TestXafAndXpo.csproj", "{F8A0F82C-6D4B-4209-B6FD-EC4019DCE796}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -97,6 +99,18 @@ Global
 		{C145564D-0CCE-4BA6-8964-E01FEDDE8893}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C145564D-0CCE-4BA6-8964-E01FEDDE8893}.Release|x64.ActiveCfg = Release|Any CPU
 		{C145564D-0CCE-4BA6-8964-E01FEDDE8893}.Release|x64.Build.0 = Release|Any CPU
+		{F8A0F82C-6D4B-4209-B6FD-EC4019DCE796}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8A0F82C-6D4B-4209-B6FD-EC4019DCE796}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8A0F82C-6D4B-4209-B6FD-EC4019DCE796}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{F8A0F82C-6D4B-4209-B6FD-EC4019DCE796}.Debug|x64.Build.0 = Debug|Any CPU
+		{F8A0F82C-6D4B-4209-B6FD-EC4019DCE796}.EasyTest|Any CPU.ActiveCfg = Release|Any CPU
+		{F8A0F82C-6D4B-4209-B6FD-EC4019DCE796}.EasyTest|Any CPU.Build.0 = Release|Any CPU
+		{F8A0F82C-6D4B-4209-B6FD-EC4019DCE796}.EasyTest|x64.ActiveCfg = Release|Any CPU
+		{F8A0F82C-6D4B-4209-B6FD-EC4019DCE796}.EasyTest|x64.Build.0 = Release|Any CPU
+		{F8A0F82C-6D4B-4209-B6FD-EC4019DCE796}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8A0F82C-6D4B-4209-B6FD-EC4019DCE796}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8A0F82C-6D4B-4209-B6FD-EC4019DCE796}.Release|x64.ActiveCfg = Release|Any CPU
+		{F8A0F82C-6D4B-4209-B6FD-EC4019DCE796}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -9,5 +9,7 @@
   <ItemGroup>
     <ProjectReference Include="..\AppPerformanceTracker.Contracts\AppPerformanceTracker.Contracts.csproj" />
   </ItemGroup>
-
+	<ItemGroup>
+		<PackageReference Include="DevExpress.Xpo" Version="24.2.3" />
+	</ItemGroup>
 </Project>
