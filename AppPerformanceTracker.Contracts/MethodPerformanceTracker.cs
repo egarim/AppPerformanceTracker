@@ -7,7 +7,7 @@ using System.Reflection;
 
 namespace AppPerformanceTracker.Contracts
 {
-    public class MethodPerformanceTracker
+    public class MethodPerformanceTracker : IMethodPerformanceTracker
     {
         private readonly Queue<MethodExecutionDto> _executionLog = new Queue<MethodExecutionDto>();
         protected readonly object _lockObject = new object();
