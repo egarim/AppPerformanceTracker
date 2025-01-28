@@ -86,11 +86,15 @@ namespace AppPerformanceTracker.Xaf
                 Debug.WriteLine($"Error in Postfix: {ex.Message}");
             }
         }
-        static IEnumerable<IMethodPerformanceTracker> trackers;
-        void Init(IEnumerable<IMethodPerformanceTracker> Trackers)
+
+        static List<IMethodPerformanceTracker> trackers = new List<IMethodPerformanceTracker>();
+
+        public static void Init(params IMethodPerformanceTracker[] Trackers)
         {
-            trackers= Trackers;
+            trackers.Clear();
+            trackers.AddRange(Trackers);
         }
+
         private static void LogExecutionTime(MethodBase method, long elapsedMs)
         {
             try
@@ -110,4 +114,5 @@ namespace AppPerformanceTracker.Xaf
             }
         }
     }
+
 }

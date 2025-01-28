@@ -1,3 +1,5 @@
+using AppPerformanceTracker.Contracts;
+using AppPerformanceTracker.Xaf;
 using DevExpress.ExpressApp;
 using DevExpress.ExpressApp.ConditionalAppearance;
 using DevExpress.ExpressApp.Xpo;
@@ -28,7 +30,13 @@ namespace TestXafAndXpo
             application = new TestApplication();
             var testModule = new TestModule();
 
+            // Replace the line causing the error with the correct initialization method
+            FileMethodPerformanceTracker.InitializeInstance(null);
+            ControllerMethodPatch.Init(FileMethodPerformanceTracker.Instance);
+          
 
+            XafPerformanceTracker xafPerformanceTracker = new XafPerformanceTracker();
+            xafPerformanceTracker.Init("TestApplication");
 
 
             application.Modules.Add(testModule);

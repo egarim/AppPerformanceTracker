@@ -7,6 +7,7 @@
 
 		<IsPackable>false</IsPackable>
 		<IsTestProject>true</IsTestProject>
+		<Platforms>AnyCPU;x64</Platforms>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -18,6 +19,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\AppPerformanceTracker.Contracts\AppPerformanceTracker.Contracts.csproj" />
 		<ProjectReference Include="..\AppPerformanceTracker.Xaf\AppPerformanceTracker.Xaf.csproj" />
 		<ProjectReference Include="..\AppPerformanceTracker.Xpo\AppPerformanceTracker.Xpo.csproj" />
 	</ItemGroup>
