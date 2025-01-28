@@ -8,7 +8,7 @@ using TestXafAndXpo.Infrastructure;
 
 namespace TestXafAndXpo
 {
-    public class Tests
+    public class WriteLogTest
     {
         private ViewController controller;
         private DetailView detailView;

@@ -38,5 +38,13 @@ namespace AppPerformanceTracker.Module.BusinessObjects {
             get => name;
             set => SetPropertyValue(nameof(Name), ref name, value);
         }
+        [Association("App-AppLogFiles")]
+        public XPCollection<AppLogFile> AppLogFiles
+        {
+            get
+            {
+                return GetCollection<AppLogFile>(nameof(AppLogFiles));
+            }
+        }
     }
 }
