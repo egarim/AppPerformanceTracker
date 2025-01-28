@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFrameworks>netstandard2.0;net35;net9.0</TargetFrameworks>
+		<LangVersion>9.0</LangVersion>
+		<ImplicitUsings>disable</ImplicitUsings>
+		<Nullable>disable</Nullable>
+		<Platforms>AnyCPU;x64</Platforms>
+	</PropertyGroup>
+
+	<!-- Conditional references for .NET 3.5 -->
+	<ItemGroup Condition="'$(TargetFramework)' == 'net35'">
+		<Reference Include="System" />
+		<Reference Include="System.Core" />
+	</ItemGroup>
+</Project>
