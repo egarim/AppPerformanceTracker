@@ -10,8 +10,7 @@ namespace AppPerformanceTracker.Xaf
     [HarmonyPatch]
     public class ControllerMethodPatch: PatchBase
     {
-
-  
+      
         // This method tells Harmony which methods to patch
         static IEnumerable<MethodBase> TargetMethods()
         {

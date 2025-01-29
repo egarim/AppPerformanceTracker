@@ -10,6 +10,9 @@ namespace AppPerformanceTracker.Contracts
     public abstract class PatchBase
     {
 
+        //HACK the prefix and postfix methods should be declared on the concrete class
+
+
         protected static List<IMethodPerformanceTracker> trackers = new List<IMethodPerformanceTracker>();
         // This method tells Harmony which methods to patch
 
