@@ -43,13 +43,14 @@ namespace AppPerformanceTracker.Module.Controllers
 
                     var CurrentMethodExecution = this.View.ObjectSpace.CreateObject<MethodExecution>();
                     CurrentMethodExecution.AppId = LineData.AppId;
+                    CurrentMethodExecution.SessionId = LineData.SessionId;
                     CurrentMethodExecution.Date = LineData.Date;
                     CurrentMethodExecution.DurationMs = LineData.DurationMs;
                     CurrentMethodExecution.MethodName = LineData.MethodName;
                     CurrentMethodExecution.DeclaringType = LineData.DeclaringType;
                     CurrentMethodExecution.FullName = LineData.FullName;
                     CurrentMethodExecution.MethodName = LineData.MethodName;
-                    CurrentMethodExecution.ExecutionTime = LineData.ExecutionTime;
+                    CurrentMethodExecution.ExecutionTime = TimeOnly.FromTimeSpan(LineData.ExecutionTime);
                 }
             }
 

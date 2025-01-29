@@ -25,7 +25,7 @@ namespace AppPerformanceTracker.Contracts
                     string message = $"{method.DeclaringType.Name}.{method.Name} took {elapsedMs}ms to execute";
                     foreach (IMethodPerformanceTracker item in trackers)
                     {
-                        item.RecordExecution("XafApp", method, args, TimeSpan.FromMilliseconds(elapsedMs), DateTime.UtcNow);
+                        item.RecordExecution("XafApp",_SessionId, method, args, TimeSpan.FromMilliseconds(elapsedMs), DateTime.UtcNow);
                     }
                 }
             }
@@ -34,9 +34,10 @@ namespace AppPerformanceTracker.Contracts
                 Debug.WriteLine($"Error in LogExecutionTime: {ex.Message}");
             }
         }
-
-        public static void Init(params IMethodPerformanceTracker[] Trackers)
+        protected static string _SessionId { get; set; }
+        public static void Init(string SessionId,params IMethodPerformanceTracker[] Trackers)
         {
+            _SessionId = SessionId;
             trackers.Clear();
             trackers.AddRange(Trackers);
         }

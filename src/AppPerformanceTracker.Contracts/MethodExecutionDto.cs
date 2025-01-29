@@ -6,30 +6,7 @@ using Newtonsoft.Json;
 
 namespace AppPerformanceTracker.Contracts
 {
-    //public class MethodExecutionDto
-    //{
-    //    public string AppId { get; set; }
-    //    public string MethodName { get; set; }
-    //    public string DeclaringType { get; set; }
-    //    public string FullName { get; set; }
-    //    public DateTime ExecutionTime { get; set; }
-    //    public double DurationMs { get; set; }
-    //    public DateTime Date { get; set; }
-
-    //    public static MethodExecutionDto Create(string AppId,MethodBase method, TimeSpan duration,DateTime dateTime)
-    //    {
-    //        return new MethodExecutionDto
-    //        {
-    //            MethodName = method.Name,
-    //            DeclaringType = method.DeclaringType?.FullName ?? "Unknown",
-    //            FullName = $"{method.DeclaringType?.FullName ?? "Unknown"}.{method.Name}",
-    //            ExecutionTime = DateTime.UtcNow,
-    //            DurationMs = duration.TotalMilliseconds,
-    //            Date = dateTime,
-    //            AppId = AppId
-    //        };
-    //    }
-    //}
+  
 
     public class MethodParameterDto
     {
@@ -57,6 +34,9 @@ namespace AppPerformanceTracker.Contracts
         [JsonProperty("appId")]
         public string AppId { get; set; }
 
+        [JsonProperty("sessionId")]
+        public string SessionId { get; set; }
+
         [JsonProperty("methodName")]
         public string MethodName { get; set; }
 
@@ -67,7 +47,7 @@ namespace AppPerformanceTracker.Contracts
         public string FullName { get; set; }
 
         [JsonProperty("executionTime")]
-        public DateTime ExecutionTime { get; set; }
+        public TimeSpan ExecutionTime { get; set; }
 
         [JsonProperty("durationMs")]
         public double DurationMs { get; set; }
@@ -78,28 +58,17 @@ namespace AppPerformanceTracker.Contracts
         [JsonProperty("parameters")]
         public List<MethodParameterDto> Parameters { get; set; }
 
-        public static MethodExecutionDto Create(string AppId, MethodBase method, TimeSpan duration, DateTime dateTime)
-        {
-            return new MethodExecutionDto
-            {
-                MethodName = method.Name,
-                DeclaringType = method.DeclaringType?.FullName ?? "Unknown",
-                FullName = $"{method.DeclaringType?.FullName ?? "Unknown"}.{method.Name}",
-                ExecutionTime = DateTime.UtcNow,
-                DurationMs = duration.TotalMilliseconds,
-                Date = dateTime,
-                AppId = AppId
-            };
-        }
 
-        public static MethodExecutionDto Create(string AppId, MethodBase method, object[] parameterValues, TimeSpan duration, DateTime dateTime)
+
+        public static MethodExecutionDto Create(string AppId,string SessionId, MethodBase method, object[] parameterValues, TimeSpan duration, DateTime dateTime)
         {
             var dto = new MethodExecutionDto
             {
                 MethodName = method.Name,
+                SessionId = SessionId,
                 DeclaringType = method.DeclaringType?.FullName ?? "Unknown",
                 FullName = $"{method.DeclaringType?.FullName ?? "Unknown"}.{method.Name}",
-                ExecutionTime = DateTime.UtcNow,
+                ExecutionTime = DateTime.UtcNow.TimeOfDay,
                 DurationMs = duration.TotalMilliseconds,
                 Date = dateTime,
                 AppId = AppId,

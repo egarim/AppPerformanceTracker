@@ -12,6 +12,7 @@ namespace TestXafAndXpo.Infrastructure
     // For more typical usage scenarios, be sure to check out https://documentation.devexpress.com/eXpressAppFramework/clsDevExpressExpressAppViewControllertopic.aspx.
     public class InvoiceController : ViewController
     {
+        SimpleAction slowAction;
 
 
 
@@ -34,7 +35,7 @@ namespace TestXafAndXpo.Infrastructure
         public InvoiceController()
         {
 
-   
+
             DevExpress.ExpressApp.Actions.ChoiceActionItem choiceActionItem1 = new DevExpress.ExpressApp.Actions.ChoiceActionItem();
             DevExpress.ExpressApp.Actions.ChoiceActionItem choiceActionItem2 = new DevExpress.ExpressApp.Actions.ChoiceActionItem();
             DevExpress.ExpressApp.Actions.ChoiceActionItem choiceActionItem3 = new DevExpress.ExpressApp.Actions.ChoiceActionItem();
@@ -208,11 +209,24 @@ namespace TestXafAndXpo.Infrastructure
             this.Actions.Add(this.popup);
             this.Actions.Add(this.popupWindowShowAction1);
             this.Actions.Add(this.PostInvoice);
-            this.TargetObjectType = typeof(XafInvoice);
+            
+            
+            //this.TargetObjectType = typeof(XafInvoice);
             // Target required Views (via the TargetXXX properties) and create their Actions.
+
+
+            slowAction = new SimpleAction(this, "SlowAction", "View");
+            slowAction.Execute += SlowAction_Execute;
+            
+        }
+        private void SlowAction_Execute(object sender, SimpleActionExecuteEventArgs e)
+        {
+            Thread.Sleep(15000);
         }
         public SimpleAction SaSetActive { get => saSetActive; set => saSetActive = value; }
         public SingleChoiceAction SingleChoiceActionFromCode { get => singleChoiceActionFromCode; set => singleChoiceActionFromCode = value; }
+        public SimpleAction SlowAction { get => slowAction; set => slowAction = value; }
+
         protected override void OnActivated()
         {
             base.OnActivated();

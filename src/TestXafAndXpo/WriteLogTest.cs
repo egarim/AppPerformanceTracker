@@ -32,7 +32,7 @@ namespace TestXafAndXpo
 
             // Replace the line causing the error with the correct initialization method
             FileMethodPerformanceTracker.InitializeInstance(null);
-            ControllerMethodPatch.Init(FileMethodPerformanceTracker.Instance);
+            ControllerMethodPatch.Init(Guid.NewGuid().ToString(),FileMethodPerformanceTracker.Instance);
           
 
             XafPerformanceTracker xafPerformanceTracker = new XafPerformanceTracker();
@@ -58,8 +58,7 @@ namespace TestXafAndXpo
             var CurrentObject = controller.View.CurrentObject;
 
             var appearanceController= application.CreateController<AppearanceController>();
-
-
+            ((InvoiceController)controller).SlowAction.DoExecute();
 
             Assert.IsNotNull(CurrentObject);
         }
