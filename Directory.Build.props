@@ -12,7 +12,8 @@
 	</PropertyGroup>
 	
 	<PropertyGroup Label="Input">
-		<TargetFrameworksVersion>netstandard2.0;net48;net8.0</TargetFrameworksVersion>
+		<TargetFrameworksVersion>netstandard2.0;net8.0</TargetFrameworksVersion>
+		<TargetNetFrameworkVersion>net48</TargetNetFrameworkVersion>
 		<LangVersion>10.0</LangVersion>
 		<XpoXafVersion>24.2.3</XpoXafVersion>
 	</PropertyGroup>

@@ -5,6 +5,7 @@
 		<ImplicitUsings>disable</ImplicitUsings>
 		<Nullable>disable</Nullable>
 		<Platforms>AnyCPU;x64</Platforms>
+		<Configurations>Debug;Release;ReleaseNetFramework</Configurations>
 	</PropertyGroup>
 
 	<!-- Conditional references for .NET 3.5 -->

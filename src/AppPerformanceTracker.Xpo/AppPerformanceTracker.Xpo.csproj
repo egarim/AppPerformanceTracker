@@ -4,6 +4,7 @@
 	<TargetFrameworks>$(TargetFrameworksVersion)</TargetFrameworks>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <Configurations>Debug;Release;ReleaseNetFramework</Configurations>
   </PropertyGroup>
 
   <ItemGroup>
@@ -19,6 +20,12 @@
 		<AssemblyName>AppPerformanceTracker.Xpo.v$(NugetVersion)</AssemblyName>
 		<Version>$(NugetVersion)</Version>
 		<PackageId>BIT.AppPerformanceTracker.Xpo</PackageId>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseNetFramework|AnyCPU'">
+	  <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+	  <AssemblyName>AppPerformanceTracker.Xpo.v$(NugetVersion)</AssemblyName>
+	  <Version>$(NugetVersion)</Version>
+	  <PackageId>BIT.AppPerformanceTracker.Xpo</PackageId>
 	</PropertyGroup>
 	<ItemGroup>
 		<None Include="..\..\README.md" Link="README.md" Pack="true" PackagePath="\" />
