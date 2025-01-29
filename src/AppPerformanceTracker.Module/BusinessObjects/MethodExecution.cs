@@ -24,6 +24,7 @@ namespace AppPerformanceTracker.Module.BusinessObjects {
             base.AfterConstruction();
             // Place your initialization code here (https://docs.devexpress.com/eXpressAppFramework/112834/getting-started/in-depth-tutorial-winforms-webforms/business-model-design/initialize-a-property-after-creating-an-object-xpo?v=22.1).
         }
+        string sessionId;
         private string appId;
         [Size(100)]
         public string AppId
@@ -31,7 +32,13 @@ namespace AppPerformanceTracker.Module.BusinessObjects {
             get => appId;
             set => SetPropertyValue(nameof(AppId), ref appId, value);
         }
-
+        
+        [Size(SizeAttribute.DefaultStringMappingFieldSize)]
+        public string SessionId
+        {
+            get => sessionId;
+            set => SetPropertyValue(nameof(SessionId), ref sessionId, value);
+        }
         private string methodName;
         [Size(500)]
         public string MethodName
@@ -56,8 +63,8 @@ namespace AppPerformanceTracker.Module.BusinessObjects {
             set => SetPropertyValue(nameof(FullName), ref fullName, value);
         }
 
-        private DateTime executionTime;
-        public DateTime ExecutionTime
+        private TimeOnly executionTime;
+        public TimeOnly ExecutionTime
         {
             get => executionTime;
             set => SetPropertyValue(nameof(ExecutionTime), ref executionTime, value);

@@ -10,7 +10,7 @@ namespace AppPerformanceTracker.Contracts
     public interface IMethodPerformanceTracker
     {
         IEnumerable<MethodExecutionDto> GetExecutions();
-        void RecordExecution(string AppId, MethodBase method, object[] parameters, TimeSpan duration, DateTime dateTime);
+        void RecordExecution(string AppId,string SessionId, MethodBase method, object[] parameters, TimeSpan duration, DateTime dateTime);
     }
 
 }

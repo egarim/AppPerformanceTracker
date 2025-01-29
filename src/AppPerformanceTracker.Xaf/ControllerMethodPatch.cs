@@ -8,10 +8,9 @@ using System.Reflection;
 namespace AppPerformanceTracker.Xaf
 {
     [HarmonyPatch]
-    public class ControllerMethodPatch
+    public class ControllerMethodPatch: PatchBase
     {
-
-        static List<IMethodPerformanceTracker> trackers = new List<IMethodPerformanceTracker>();
+      
         // This method tells Harmony which methods to patch
         static IEnumerable<MethodBase> TargetMethods()
         {
@@ -71,42 +70,7 @@ namespace AppPerformanceTracker.Xaf
             __state = Stopwatch.StartNew();
         }
 
-        // Postfix method to stop timing and log
-        //static void Postfix(MethodBase __originalMethod, Stopwatch __state)
-        //{
-        //    try
-        //    {
-        //        if (__state != null && __originalMethod != null)
-        //        {
-        //            __state.Stop();
-        //            long elapsedMs = __state.ElapsedMilliseconds;
-        //            LogExecutionTime(__originalMethod, elapsedMs);
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Debug.WriteLine($"Error in Postfix: {ex.Message}");
-        //    }
-        //}
-
-        //private static void LogExecutionTime(MethodBase method, long elapsedMs)
-        //{
-        //    try
-        //    {
-        //        if (method?.DeclaringType != null)
-        //        {
-        //            string message = $"{method.DeclaringType.Name}.{method.Name} took {elapsedMs}ms to execute";
-        //            foreach (IMethodPerformanceTracker item in trackers)
-        //            {
-        //                item.RecordExecution("XafApp", method, TimeSpan.FromMilliseconds(elapsedMs), DateTime.UtcNow);
-        //            }
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Debug.WriteLine($"Error in LogExecutionTime: {ex.Message}");
-        //    }
-        //}
+       
         // Postfix method to stop timing and log
         static void Postfix(MethodBase __originalMethod, object[] __args, Stopwatch __state)
         {
@@ -123,31 +87,6 @@ namespace AppPerformanceTracker.Xaf
             {
                 Debug.WriteLine($"Error in Postfix: {ex.Message}");
             }
-        }
-
-        private static void LogExecutionTime(MethodBase method, object[] args, long elapsedMs)
-        {
-            try
-            {
-                if (method?.DeclaringType != null)
-                {
-                    string message = $"{method.DeclaringType.Name}.{method.Name} took {elapsedMs}ms to execute";
-                    foreach (IMethodPerformanceTracker item in trackers)
-                    {
-                        item.RecordExecution("XafApp", method, args, TimeSpan.FromMilliseconds(elapsedMs), DateTime.UtcNow);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine($"Error in LogExecutionTime: {ex.Message}");
-            }
-        }
-
-        public static void Init(params IMethodPerformanceTracker[] Trackers)
-        {
-            trackers.Clear();
-            trackers.AddRange(Trackers);
         }
 
     }

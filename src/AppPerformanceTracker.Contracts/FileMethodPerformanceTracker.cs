@@ -51,14 +51,11 @@ namespace AppPerformanceTracker.Contracts
             }
         }
 
-        public override void RecordExecution(string AppId, MethodBase method, object[] parameters, TimeSpan duration, DateTime dateTime)
+        public override void RecordExecution(string AppId,string SessionId, MethodBase method, object[] parameters, TimeSpan duration, DateTime dateTime)
         {
-            base.RecordExecution(AppId, method, parameters, duration, dateTime);
+            base.RecordExecution(AppId,SessionId, method, parameters, duration, dateTime);
 
-            MethodExecutionDto execution = MethodExecutionDto.Create(AppId, method, duration, dateTime);
-
-
-
+            MethodExecutionDto execution = MethodExecutionDto.Create(AppId, SessionId, method, parameters, duration, dateTime);
 
             var logEntry = JsonConvert.SerializeObject(execution);
             var encodedLogEntry = Convert.ToBase64String(Encoding.UTF8.GetBytes(logEntry));
