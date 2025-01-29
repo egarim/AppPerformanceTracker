@@ -8,8 +8,8 @@
 
 
 	<PropertyGroup Label="Output">
-		<NugetVersion>21.2.8.3</NugetVersion>
-		<NugetVersionContracts>1.0.2</NugetVersionContracts>
+		<NugetVersion>21.2.8.5</NugetVersion>
+		<NugetVersionContracts>1.0.3</NugetVersionContracts>
 	</PropertyGroup>
 	
 	<PropertyGroup Label="Input">
