@@ -51,9 +51,9 @@ namespace AppPerformanceTracker.Contracts
             }
         }
 
-        public override void RecordExecution(string AppId, MethodBase method, TimeSpan duration, DateTime dateTime)
+        public override void RecordExecution(string AppId, MethodBase method, object[] parameters, TimeSpan duration, DateTime dateTime)
         {
-            base.RecordExecution(AppId, method, duration, dateTime);
+            base.RecordExecution(AppId, method, parameters, duration, dateTime);
 
             MethodExecutionDto execution = MethodExecutionDto.Create(AppId, method, duration, dateTime);
 

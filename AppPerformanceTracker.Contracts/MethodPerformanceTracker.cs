@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 
@@ -12,14 +14,7 @@ namespace AppPerformanceTracker.Contracts
         private readonly Queue<MethodExecutionDto> _executionLog = new Queue<MethodExecutionDto>();
         protected readonly object _lockObject = new object();
 
-        public virtual void RecordExecution(string AppId, MethodBase method, TimeSpan duration, DateTime dateTime)
-        {
-            var execution = MethodExecutionDto.Create(AppId, method, duration, dateTime);
-            lock (_lockObject)
-            {
-                _executionLog.Enqueue(execution);
-            }
-        }
+    
 
         public IEnumerable<MethodExecutionDto> GetExecutions()
         {
@@ -62,6 +57,21 @@ namespace AppPerformanceTracker.Contracts
             return count % 2 == 0
                 ? (sorted[mid - 1] + sorted[mid]) / 2
                 : sorted[mid];
+        }
+
+        public virtual void RecordExecution(string AppId, MethodBase method, object[] parameters, TimeSpan duration, DateTime dateTime)
+        {
+            var execution = MethodExecutionDto.Create(AppId, method, parameters, duration, dateTime);
+            
+            //TODO remove after test
+            var json = JsonConvert.SerializeObject(execution, Formatting.Indented);
+            Debug.WriteLine($"Serialized JSON: {json}");
+
+
+            lock (_lockObject)
+            {
+                _executionLog.Enqueue(execution);
+            }
         }
     }
 }

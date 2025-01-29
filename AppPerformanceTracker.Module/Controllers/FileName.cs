@@ -28,25 +28,34 @@ namespace AppPerformanceTracker.Module.Controllers
         }
         private void parse_Execute(object sender, SimpleActionExecuteEventArgs e)
         {
-            var CurrentAppLogFile=this.View.CurrentObject as AppLogFile;
+            var CurrentAppLogFile = this.View.CurrentObject as AppLogFile;
             MemoryStream stream = new();
             CurrentAppLogFile.LogFile.SaveToStream(stream);
-
+            stream.Seek(0, SeekOrigin.Begin);
             using (var reader = new StreamReader(stream, Encoding.UTF8))
             {
-                // Reset stream position to beginning
-                stream.Position = 0;
+                string line;
+                while ((line = reader.ReadLine()) != null)
+                {
+                    var FromBase64 = Convert.FromBase64String(line);
+                    var TextLine = Encoding.UTF8.GetString(FromBase64);
+                    var LineData = JsonConvert.DeserializeObject<MethodExecutionDto>(TextLine);
 
-                // Read the entire content as string
-                string content = reader.ReadLine();
-                var FromBase64 = Convert.FromBase64String(content);
-                var TextLine = Encoding.UTF8.GetString(FromBase64);
-                var Line = JsonConvert.DeserializeObject<MethodExecutionDto>(TextLine);
+                    var CurrentMethodExecution = this.View.ObjectSpace.CreateObject<MethodExecution>();
+                    CurrentMethodExecution.AppId = LineData.AppId;
+                    CurrentMethodExecution.Date = LineData.Date;
+                    CurrentMethodExecution.DurationMs = LineData.DurationMs;
+                    CurrentMethodExecution.MethodName = LineData.MethodName;
+                    CurrentMethodExecution.DeclaringType = LineData.DeclaringType;
+                    CurrentMethodExecution.FullName = LineData.FullName;
+                    CurrentMethodExecution.MethodName = LineData.MethodName;
+                    CurrentMethodExecution.ExecutionTime = LineData.ExecutionTime;
+                }
             }
 
-          
-            // Execute your business logic (https://docs.devexpress.com/eXpressAppFramework/112737/).
+            this.View.ObjectSpace.CommitChanges();
         }
+
         protected override void OnActivated()
         {
             base.OnActivated();

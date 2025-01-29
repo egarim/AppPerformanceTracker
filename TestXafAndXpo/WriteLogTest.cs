@@ -57,20 +57,12 @@ namespace TestXafAndXpo
         {
             var CurrentObject = controller.View.CurrentObject;
 
-            var apperanceController= application.CreateController<AppearanceController>();
+            var appearanceController= application.CreateController<AppearanceController>();
 
 
 
             Assert.IsNotNull(CurrentObject);
         }
-        [Test]
-        public void LogToMethodData()
-        {
-        
-            
-            var Log=  File.ReadAllLines("execution_log.txt");
-        
-        
-        }
+  
     }
 }
