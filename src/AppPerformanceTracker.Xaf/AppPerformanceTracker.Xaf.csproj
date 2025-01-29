@@ -10,6 +10,22 @@
     <ProjectReference Include="..\AppPerformanceTracker.Contracts\AppPerformanceTracker.Contracts.csproj" />
   </ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="DevExpress.ExpressApp" Version="24.2.3" />
+		<PackageReference Include="DevExpress.ExpressApp" Version="$(XpoXafVersion)" />
 	</ItemGroup>
+
+	<!--Nuget Generation Section Start-->
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<AssemblyName>AppPerformanceTracker.Xaf.v$(NugetVersion)</AssemblyName>
+		<Version>$(NugetVersion)</Version>
+		<PackageId>BIT.AppPerformanceTracker.Xaf</PackageId>
+	</PropertyGroup>
+	<ItemGroup>
+		<None Include="..\..\README.md" Link="README.md" Pack="true" PackagePath="\" />
+	</ItemGroup>
+	<!--Nuget Generation Section Start-->
+
+
+
+
 </Project>
