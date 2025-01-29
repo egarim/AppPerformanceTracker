@@ -8,7 +8,7 @@
 
 
 	<PropertyGroup Label="Output">
-		<NugetVersion>21.2.8.1</NugetVersion>
+		<NugetVersion>21.2.8.2</NugetVersion>
 	</PropertyGroup>
 	
 	<PropertyGroup Label="Input">
