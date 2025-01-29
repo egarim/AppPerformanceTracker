@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+	<TargetFrameworks>$(TargetFrameworksVersion)</TargetFrameworks>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
@@ -10,6 +10,6 @@
     <ProjectReference Include="..\AppPerformanceTracker.Contracts\AppPerformanceTracker.Contracts.csproj" />
   </ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="DevExpress.ExpressApp" Version="24.2.3" />
+		<PackageReference Include="DevExpress.Xpo" Version="24.2.3" />
 	</ItemGroup>
 </Project>

@@ -1,0 +1,20 @@
+﻿<Project>
+
+	<PropertyGroup Label="All">
+		<PackageProjectUrl>https://github.com/egarim/SyncFramework</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/egarim/SyncFramework</RepositoryUrl>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+	</PropertyGroup>
+
+
+	<PropertyGroup Label="Output">
+		<NugetVersion>24.2.3</NugetVersion>
+	</PropertyGroup>
+	
+	<PropertyGroup Label="Input">
+		<TargetFrameworksVersion>netstandard2.0;net48;net8.0</TargetFrameworksVersion>
+		<LangVersion>10.0</LangVersion>
+		<XpoXafVersion>24.2.3</XpoXafVersion>
+	</PropertyGroup>
+	
+</Project>
