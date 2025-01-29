@@ -1,0 +1,11 @@
+{
+  "solution": {
+    "path": "AppPerformanceTracker.sln",
+    "projects": [
+      "AppPerformanceTracker.Contracts\\AppPerformanceTracker.Contracts.csproj",
+      "AppPerformanceTracker.Xaf\\AppPerformanceTracker.Xaf.csproj",
+      "AppPerformanceTracker.Xpo\\AppPerformanceTracker.Xpo.csproj",
+      "TestXafAndXpo\\TestXafAndXpo.csproj"
+    ]
+  }
+}

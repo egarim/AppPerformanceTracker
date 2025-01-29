@@ -1,21 +1,21 @@
 ﻿<Project>
 
 	<PropertyGroup Label="All">
-		<PackageProjectUrl>https://github.com/egarim/SyncFramework</PackageProjectUrl>
-		<RepositoryUrl>https://github.com/egarim/SyncFramework</RepositoryUrl>
+		<PackageProjectUrl>https://github.com/egarim/AppPerformanceTracker</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/egarim/AppPerformanceTracker</RepositoryUrl>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 	</PropertyGroup>
 
 
 	<PropertyGroup Label="Output">
-		<NugetVersion>24.2.3</NugetVersion>
+		<NugetVersion>21.2.8.1</NugetVersion>
 	</PropertyGroup>
 	
 	<PropertyGroup Label="Input">
 		<TargetFrameworksVersion>netstandard2.0;net8.0;net48</TargetFrameworksVersion>
 		<TargetNetFrameworkVersion>net48</TargetNetFrameworkVersion>
 		<LangVersion>10.0</LangVersion>
-		<XpoXafVersion>24.2.3</XpoXafVersion>
+		<XpoXafVersion>21.2.8</XpoXafVersion>
 	</PropertyGroup>
 	
 </Project>
