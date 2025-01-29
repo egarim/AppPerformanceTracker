@@ -14,7 +14,7 @@
 		<PackageReference Include="DevExpress.ExpressApp" Version="$(XpoXafVersion)" />
 	</ItemGroup>
 
-	<!--Nuget Generation Section Start-->
+	<!--Nuget Generation Section-->
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<AssemblyName>AppPerformanceTracker.Xaf.v$(NugetVersion)</AssemblyName>
@@ -30,9 +30,13 @@
 	<ItemGroup>
 		<None Include="..\..\README.md" Link="README.md" Pack="true" PackagePath="\" />
 	</ItemGroup>
-	<!--Nuget Generation Section Start-->
+	<!--Nuget Generation Section-->
 
-
+	<!--CopyPackage-->
+	<Target Name="CopyPackage" AfterTargets="Pack">
+		<Copy SourceFiles="C:\Users\joche\source\repos\AppPerformanceTracker\src\AppPerformanceTracker.Xaf\bin\Release\$(ConfigurationName)\$(PackageId).$(PackageVersion).nupkg" DestinationFolder="$(USERPROFILE)\Documents\MyNugets\" />
+	</Target>
+	<!--CopyPackage-->
 
 
 </Project>
