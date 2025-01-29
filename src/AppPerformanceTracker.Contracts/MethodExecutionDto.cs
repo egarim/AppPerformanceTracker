@@ -1,13 +1,10 @@
 ﻿using System.Reflection;
 using System;
-
 using System.Collections.Generic;
 using Newtonsoft.Json;
 
 namespace AppPerformanceTracker.Contracts
 {
-  
-
     public class MethodParameterDto
     {
         [JsonConstructor]
@@ -24,6 +21,7 @@ namespace AppPerformanceTracker.Contracts
         [JsonProperty("value")]
         public string Value { get; set; }
     }
+
     public class MethodExecutionDto
     {
         public MethodExecutionDto()
@@ -58,32 +56,29 @@ namespace AppPerformanceTracker.Contracts
         [JsonProperty("parameters")]
         public List<MethodParameterDto> Parameters { get; set; }
 
-
-
-        public static MethodExecutionDto Create(string AppId,string SessionId, MethodBase method, object[] parameterValues, TimeSpan duration, DateTime dateTime)
+        public static MethodExecutionDto Create(string appId, string sessionId, MethodBase method, object[] parameterValues, TimeSpan duration, DateTime dateTime)
         {
             var dto = new MethodExecutionDto
             {
-                MethodName = method.Name,
-                SessionId = SessionId,
-                DeclaringType = method.DeclaringType?.FullName ?? "Unknown",
-                FullName = $"{method.DeclaringType?.FullName ?? "Unknown"}.{method.Name}",
+                MethodName = method?.Name ?? "Unknown",
+                SessionId = sessionId ?? "Unknown",
+                DeclaringType = method?.DeclaringType?.FullName ?? "Unknown",
+                FullName = $"{method?.DeclaringType?.FullName ?? "Unknown"}.{method?.Name ?? "Unknown"}",
                 ExecutionTime = DateTime.UtcNow.TimeOfDay,
                 DurationMs = duration.TotalMilliseconds,
                 Date = dateTime,
-                AppId = AppId,
-               
+                AppId = appId ?? "Unknown",
             };
 
-            var parameters = method.GetParameters();
+            var parameters = method?.GetParameters() ?? Array.Empty<ParameterInfo>();
             for (int i = 0; i < parameters.Length; i++)
             {
-                if (i < parameterValues.Length)
+                if (i < parameterValues?.Length)
                 {
-                    var paramName = parameters[i].Name;
-                    var paramValue = parameterValues[i].ToString();
+                    var paramName = parameters[i].Name ?? "Unknown";
+                    var paramValue = parameterValues[i]?.ToString() ?? "null";
                     var paramType = parameters[i].ParameterType;
-                    MethodParameterDto methodParameterDto = new() { Name = paramName, Value = paramValue, Type = paramType.FullName };
+                    MethodParameterDto methodParameterDto = new() { Name = paramName, Value = paramValue, Type = paramType.FullName ?? "Unknown" };
                     dto.Parameters.Add(methodParameterDto);
                 }
             }
@@ -91,6 +86,4 @@ namespace AppPerformanceTracker.Contracts
             return dto;
         }
     }
-
-
 }
