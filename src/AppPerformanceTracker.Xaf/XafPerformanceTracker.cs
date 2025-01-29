@@ -20,8 +20,9 @@ namespace AppPerformanceTracker.Xaf
             }
             catch (Exception ex)
             {
-
                 Debug.WriteLine(ex.Message);
+                throw ex;
+              
             }
         }
     }
