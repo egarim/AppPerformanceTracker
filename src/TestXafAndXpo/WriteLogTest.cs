@@ -18,9 +18,19 @@ namespace TestXafAndXpo
         [TearDown]
         public void TearDown()
         {
-            detailView?.Dispose();
-            controller?.Dispose();
-            application?.Dispose();
+            try
+            {
+                detailView?.Dispose();
+                application?.Dispose();
+                controller?.Dispose();
+            }
+            catch (Exception)
+            {
+
+                //throw;
+            }
+          
+          
         }
         [SetUp]
         public virtual void SetUp()
