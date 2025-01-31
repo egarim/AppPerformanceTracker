@@ -59,8 +59,8 @@ namespace TestXafAndXpo
 
             var appearanceController= application.CreateController<AppearanceController>();
             ((InvoiceController)controller).SlowAction.DoExecute();
-
-            Assert.IsNotNull(CurrentObject);
+            var Log = File.ReadAllLines("execution_log.txt");
+            Assert.IsTrue(Log.Length > 0);
         }
   
     }

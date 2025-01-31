@@ -67,6 +67,11 @@ namespace AppPerformanceTracker.Xaf
         // Prefix method to start timing
         static void Prefix(ref Stopwatch __state)
         {
+
+            if(__state==null)
+            {
+                return;
+            }
             __state = Stopwatch.StartNew();
         }
 
