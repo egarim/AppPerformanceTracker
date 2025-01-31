@@ -17,4 +17,32 @@
 	  <PackageReference Include="Lib.Harmony" Version="2.3.3" />
 	  <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 	</ItemGroup>
+
+	<!-- Conditional references for .NET 3.5 -->
+	<ItemGroup Condition="'$(TargetFramework)' == 'net35'">
+		<Reference Include="System" />
+		<Reference Include="System.Core" />
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Lib.Harmony" Version="2.3.3" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+	</ItemGroup>
+
+	<!--Nuget Generation Section-->
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<AssemblyName>AppPerformanceTracker.Contracts.v$(NugetVersionContracts)</AssemblyName>
+		<Version>$(NugetVersionContracts)</Version>
+		<PackageId>BIT.AppPerformanceTracker.Contracts</PackageId>
+	</PropertyGroup>
+	<ItemGroup>
+		<None Include="..\..\README.md" Link="README.md" Pack="true" PackagePath="\" />
+	</ItemGroup>
+	<!--Nuget Generation Section-->
+
+	<!--CopyPackage-->
+	<Target Name="CopyPackage" AfterTargets="Pack">
+		<Copy SourceFiles="C:\Users\joche\source\repos\AppPerformanceTracker\src\AppPerformanceTracker.Contracts\bin\Release\$(ConfigurationName)\$(PackageId).$(PackageVersion).nupkg" DestinationFolder="$(USERPROFILE)\Documents\MyNugets\" />
+	</Target>
+	<!--CopyPackage-->
 </Project>
