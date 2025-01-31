@@ -13,8 +13,9 @@ namespace AppPerformanceTracker.Contracts
         private static FileMethodPerformanceTracker _instance;
         private static readonly object _instanceLock = new object();
         private readonly string _logFilePath;
-        private readonly StreamWriter _streamWriter;
+        private static  StreamWriter _streamWriter;
 
+   
         private FileMethodPerformanceTracker(string logFilePath)
         {
             _logFilePath = logFilePath ?? Path.Combine(Directory.GetCurrentDirectory(), "execution_log.txt");
